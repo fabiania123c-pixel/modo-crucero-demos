@@ -1,10 +1,13 @@
 import { notFound } from "next/navigation";
 import Chat from "@/components/Chat";
+import Simulada from "@/components/Simulada";
 import { obtenerDemo } from "@/lib/demos";
 
 export const revalidate = 300;
 
 const WHATSAPP = process.env.NEXT_PUBLIC_WHATSAPP || "";
+// With an API key the demo shows the live receptionist; without one, a scripted conversation.
+const CHAT_EN_VIVO = Boolean(process.env.ANTHROPIC_API_KEY);
 
 function fmt(n: number) {
   return new Intl.NumberFormat("es-EC", { maximumFractionDigits: 0 }).format(n);
@@ -82,14 +85,25 @@ export default async function DemoPage({ params }: { params: Promise<{ slug: str
         <p className="nota">{d.estimado.supuestos}</p>
       </section>
 
-      <section>
-        <h2>2. Pruebe su recepcionista IA</h2>
-        <p className="nota">
-          Ya conoce sus servicios, horarios y profesionales. Escríbale como si fuera un paciente y
-          pídale una cita.
-        </p>
-        <Chat slug={d.slug} nombre={d.nombre} servicios={d.servicios} />
-      </section>
+      {CHAT_EN_VIVO ? (
+        <section>
+          <h2>2. Pruebe su recepcionista IA</h2>
+          <p className="nota">
+            Ya conoce sus servicios, horarios y profesionales. Escríbale como si fuera un paciente y
+            pídale una cita.
+          </p>
+          <Chat slug={d.slug} nombre={d.nombre} servicios={d.servicios} />
+        </section>
+      ) : (
+        <section>
+          <h2>2. Así atendería su recepcionista IA</h2>
+          <p className="nota">
+            Un paciente escribe a las 11:42 de la noche. La recepcionista ya conoce sus servicios,
+            horarios y profesionales, y agenda la cita sin que nadie de su equipo intervenga.
+          </p>
+          <Simulada nombre={d.nombre} servicio={servicio} profesional={profesional} />
+        </section>
+      )}
 
       <section>
         <h2>3. Pacientes que vuelven solos</h2>
