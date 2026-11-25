@@ -1,0 +1,36 @@
+[
+  {
+    "slug": "clinica-dental-ejemplo",
+    "nombre": "Clínica Dental Ejemplo",
+    "especialidad": "Odontología",
+    "zona": "Cumbayá",
+    "direccion": "Dirección de ejemplo",
+    "profesionales": [
+      { "nombre": "Dra. Ana Vega", "rol": "Ortodoncista" },
+      { "nombre": "Dr. Luis Paredes", "rol": "Odontólogo general" },
+      { "nombre": "Dra. Sofía Ruiz", "rol": "Endodoncista" }
+    ],
+    "servicios": ["Limpieza dental", "Ortodoncia", "Blanqueamiento", "Endodoncia", "Implantes"],
+    "horarios": "Lunes a viernes de 9:00 a 19:00, sábados de 9:00 a 13:00",
+    "calificacion": 4.3,
+    "numReviews": 210,
+    "quejas": {
+      "cantidad": 7,
+      "ejemplos": [
+        { "texto": "Escribí por WhatsApp y me respondieron al día siguiente.", "link": "#" },
+        { "texto": "Cuesta conseguir cita por teléfono.", "link": "#" }
+      ]
+    },
+    "competencia": [
+      { "nombre": "Competidor A", "calificacion": 4.7 },
+      { "nombre": "Competidor B", "calificacion": 4.6 }
+    ],
+    "estimado": {
+      "min": 15,
+      "max": 25,
+      "supuestos": "Ejemplo ilustrativo: supone que 1 de cada 10 consultas por WhatsApp no recibe respuesta a tiempo."
+    },
+    "ticketPromedio": 60,
+    "fecha": "2026-11-25"
+  }
+]
